@@ -81,11 +81,11 @@ Route::middleware(['auth', 'role: admin,guru,'])->group(function () {
 
     // Guru Management Routes (Admin & Guru)
     Route::prefix('guru')->name('guru.')->group(function () {
-        Route::get('/create', [GuruController::class, 'create'])->name('create');
+        Route::get('/create', [GuruController::class, 'create'])->name('create')->middleware('role:admin');
         Route::post('/store', [GuruController::class, 'store'])->name('store');
-        Route::get('/{id}/edit', [GuruController::class, 'edit'])->name('edit');
+        Route::get('/{id}/edit', [GuruController::class, 'edit'])->name('edit')->middleware('role:guru');
         Route::put('/{id}/update', [GuruController::class, 'update'])->name('update');
-        Route::delete('/{id}/delete', [GuruController::class, 'delete'])->name('delete');
+        Route::delete('/{id}/delete', [GuruController::class, 'delete'])->name('delete')->middleware('role:admin');
     });
 
     // Siswa Management Routes (Admin & Guru)
