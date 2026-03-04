@@ -71,7 +71,7 @@ Route::middleware(['auth'])->group(function () {
 | Admin & Guru Routes (Auth + Role Required)
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth', 'role: admin,guru,'])->group(function () {
+Route::middleware(['auth', 'role:admin,guru'])->group(function () {
      
     // Galeri Routes
     Route::prefix('admin')->name('admin.')->group(function () {
